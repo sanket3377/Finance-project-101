@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
-
+from scraper.search import search_company
 app = FastAPI()
 
 app.add_middleware(
@@ -23,15 +23,11 @@ async def home():
     return {"message": "Backend is running successfully!"}
 
 @app.post("/fetch")
+
+
+@app.post("/fetch")
 async def fetch_data(request: DataRequest):
 
-    print("Company:", request.company)
-    print("Data Items:", request.data_items)
-    print("Timelines:", request.timelines)
+    result = search_company(request.company)
 
-    return {
-        "status": "received",
-        "company": request.company,
-        "data_items": request.data_items,
-        "timelines": request.timelines
-    }
+    return result
