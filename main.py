@@ -26,14 +26,17 @@ async def home():
 @app.post("/fetch")
 async def fetch_data(request: DataRequest):
 
-    soup = get_company_soup(request.company)
+    command = get_stock_json(request.query)
 
-    if soup is None:
-        return {
-            "success": False,
-            "message": "Company not found."
-        }
+    company_name = command["stock"]
+
+    company_url = search_company(company_name)
+
+    soup = get_company_soup(company_name)
 
     return {
-    "success": True,
-}
+        "gemini_json": command,
+        "company_name": company_name,
+        "company_url": company_url,
+        "soup_created": soup is not None
+    }
