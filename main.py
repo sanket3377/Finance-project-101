@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 
-from gemini import parse_query
-from search import search
+from scraper.gemini import parse_query
+from scraper.search import search
 
 app = FastAPI()
 
