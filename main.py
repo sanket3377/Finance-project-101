@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+oofrom fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
@@ -37,6 +37,6 @@ async def fetch_data(request: DataRequest):
         }
 
     return {
-        "success": True,
-        "title": soup.title.get_text(strip=True)
-    }
+    "success": True,
+    "html": soup.prettify()[:5000]
+}
