@@ -15,9 +15,7 @@ app.add_middleware(
 )
 
 class DataRequest(BaseModel):
-    company: str
-    data_items: List[str]
-    timelines: List[str]
+    query: str
 
 @app.get("/")
 async def home():
