@@ -4,19 +4,6 @@ from scraper.gemini import get_stock_json
 
 BASE_URL = "https://www.screener.in"
 
-
-def search(user_input):
-    # Ask Gemini to extract the stock name
-    command = get_stock_json(user_input)
-
-    # Get the company name from the JSON
-    company_name = command["stock"]
-
-    # Use your existing function
-    company_url = search_company(company_name)
-
-    return company_url
-
 def search_company(company_name):
 
     company_name = company_name.strip()
