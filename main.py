@@ -1,45 +1,27 @@
 from fastapi import FastAPI
-from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
-from typing import List
-from scraper.search import search_company
-from scraper.search import get_company_soup
-from scraper.gemini import get_stock_json
+
+from gemini import parse_query
+from search import search
+
 app = FastAPI()
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=["*"],   # For development. Later we'll restrict this.
-    allow_credentials=True,
-    allow_methods=["*"],
-    allow_headers=["*"],
-)
 
-class DataRequest(BaseModel):
-    company: str
-    data_items: List[str]
-    timelines: List[str]
+class UserRequest(BaseModel):
+    query: str
 
-@app.get("/")
-async def home():
-    return {"message": "Backend is running successfully!"}
 
-@app.post("/fetch")
+@app.post("/search")
+async def run_search(request: UserRequest):
+    # Step 1: Send the user's query to Gemini
+    gemini_output = parse_query(request.query)
 
-@app.post("/fetch")
-async def fetch_data(request: DataRequest):
+    # Step 2: Store the Gemini output (optional)
+    print("Gemini Output:")
+    print(gemini_output)
 
-    command = get_stock_json(request.query)
+    # Step 3: Send Gemini's output to the search module
+    results = search(gemini_output)
 
-    company_name = command["stock"]
-
-    company_url = search_company(company_name)
-
-    soup = get_company_soup(company_name)
-
-    return {
-        "gemini_json": command,
-        "company_name": company_name,
-        "company_url": company_url,
-        "soup_created": soup is not None
-    }
+    # Step 4: Return whatever the search module returns
+    return results
