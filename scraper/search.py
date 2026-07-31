@@ -1,4 +1,5 @@
 import requests
+from bs4 import BeautifulSoup
 
 BASE_URL = "https://www.screener.in"
 
@@ -23,23 +24,39 @@ def search_company(company_name):
     )
 
     if response.status_code != 200:
-        return {
-            "success": False,
-            "message": "Search request failed."
-        }
+        return None
 
     companies = response.json()
 
     if len(companies) == 0:
-        return {
-            "success": False,
-            "message": "Company not found."
-        }
+        return None
 
-    company = companies[0]
+    return BASE_URL + companies[0]["url"]
 
-    return {
-        "success": True,
-        "name": company["name"],
-        "url": BASE_URL + company["url"]
+
+def get_company_soup(company_name):
+
+    company_url = search_company(company_name)
+
+    if company_url is None:
+        return None
+
+    headers = {
+        "User-Agent": "Mozilla/5.0"
     }
+
+    response = requests.get(
+        company_url,
+        headers=headers,
+        timeout=20
+    )
+
+    if response.status_code != 200:
+        return None
+
+    soup = BeautifulSoup(
+        response.text,
+        "lxml"
+    )
+
+    return soup
