@@ -4,6 +4,7 @@ from pydantic import BaseModel
 from typing import List
 from scraper.search import search_company
 from scraper.search import get_company_soup
+from scraper.gemini import get_stock_json
 app = FastAPI()
 
 app.add_middleware(
