@@ -3,6 +3,7 @@ from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List
 from scraper.search import search_company
+from scraper.search import get_company_soup
 app = FastAPI()
 
 app.add_middleware(
@@ -24,10 +25,18 @@ async def home():
 
 @app.post("/fetch")
 
-
 @app.post("/fetch")
 async def fetch_data(request: DataRequest):
 
-    result = search_company(request.company)
+    soup = get_company_soup(request.company)
 
-    return result
+    if soup is None:
+        return {
+            "success": False,
+            "message": "Company not found."
+        }
+
+    return {
+        "success": True,
+        "title": soup.title.get_text(strip=True)
+    }
