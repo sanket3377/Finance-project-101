@@ -30,8 +30,7 @@ Output:
 {"stock":"Infosys"}
 """
 
-
-def get_stock_json(user_input: str) -> dict:
+def parse_query(user_input: str) -> dict:
     response = client.models.generate_content(
         model="gemini-2.5-flash",
         contents=user_input,
