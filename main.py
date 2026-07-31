@@ -11,6 +11,13 @@ class DataRequest(BaseModel):
     timelines: List[str]
 
 
+@app.get("/")
+async def home():
+    return {
+        "message": "Backend is running successfully!"
+    }
+
+
 @app.post("/fetch")
 async def fetch_data(request: DataRequest):
 
