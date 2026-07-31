@@ -38,5 +38,4 @@ async def fetch_data(request: DataRequest):
 
     return {
     "success": True,
-    "html": soup.prettify()[:5000]
 }
