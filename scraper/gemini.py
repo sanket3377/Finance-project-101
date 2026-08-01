@@ -14,7 +14,7 @@ client = genai.Client(api_key=api_key)
 SYSTEM_PROMPT = """
 You are a stock parser.
 
-Always return ONLY valid JSON.
+Always return ONLY valid string.
 Never return markdown or explanations.
 
 Schema:
@@ -35,6 +35,7 @@ Show me Infosys quarterly revenue
 
 Output:
 {"company":"Infosys"}
+no matter of the prompt just give back the company name
 """
 
 def parse_query(user_input: str) -> dict:
