@@ -1,23 +1,18 @@
 import requests
-from bs4 import BeautifulSoup
-
+from bs4 important BeautifulSoup
 BASE_URL = "https://www.screener.in"
 
 def search_company(company_name):
-    if company_name==None :
-        return none
+    if not company_name:
+        return None
 
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
 
-    params = {
-        "q": company_name
-    }
-
     response = requests.get(
         f"{BASE_URL}/api/company/search/",
-        params=params,
+        params={"q": company_name},
         headers=headers,
         timeout=20
     )
@@ -27,11 +22,18 @@ def search_company(company_name):
 
     companies = response.json()
 
-    if len(companies) == 0:
+    print("Search results:", companies)   # Debug
+
+    if not companies:
         return None
 
-    return BASE_URL + companies[0]["url"]
+    # Look for an exact name match first
+    for company in companies:
+        if company["name"].strip().lower() == company_name.strip().lower():
+            return BASE_URL + company["url"]
 
+    # Otherwise return the first result
+    return BASE_URL + companies[0]["url"]
 
 def get_company_soup(company_name):
 
