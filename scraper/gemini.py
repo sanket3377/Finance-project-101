@@ -39,13 +39,12 @@ Output:
 
 def parse_query(user_input: str) -> dict:
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
-        contents=user_input,
-        config=types.GenerateContentConfig(
-            system_instruction=SYSTEM_PROMPT,
-            response_mime_type="application/json",
-            temperature=0
-        ),
-    )
-
+    model="gemini-2.5-flash-lite",
+    contents=user_input,
+    config=types.GenerateContentConfig(
+        system_instruction=SYSTEM_PROMPT,
+        response_mime_type="application/json",
+        temperature=0
+    ),
+)
     return json.loads(response.text)
