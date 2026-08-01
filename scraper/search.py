@@ -16,19 +16,17 @@ def search_company(company_name):
     headers=headers,
     timeout=20
 )
+    companies = response.json()
 
     if response.status_code != 200:
         return None
-
-    companies = response.json()
+    else:
+        return url , companies
 
     print("Company searched:", company_name)
     print("Results:", companies)
 
-    if not companies:
-        return None
-
-    return BASE_URL + companies[0]["url"]
+    
 
 def get_company_soup(company_name):
 
