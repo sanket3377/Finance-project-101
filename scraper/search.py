@@ -49,4 +49,4 @@ def get_company_soup(company_name):
         "lxml"
     )
 
-    return soup
+    return soup.text
