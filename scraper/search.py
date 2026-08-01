@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 BASE_URL = "https://www.screener.in"
 
 def search_company(company_name):
-    if not company_name:
+    if company_name is None:
         return None
 
     headers = {
@@ -22,17 +22,12 @@ def search_company(company_name):
 
     companies = response.json()
 
-    print("Search results:", companies)   # Debug
+    print("Company searched:", company_name)
+    print("Results:", companies)
 
     if not companies:
         return None
 
-    # Look for an exact name match first
-    for company in companies:
-        if company["name"].strip().lower() == company_name.strip().lower():
-            return BASE_URL + company["url"]
-
-    # Otherwise return the first result
     return BASE_URL + companies[0]["url"]
 
 def get_company_soup(company_name):
