@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 from scraper.gemini import parse_query
 from scraper.search import search_company
-from scraper.search import 
+from scraper.search import get_company_soup
 
 app = FastAPI()
 
@@ -23,6 +23,7 @@ async def run_search(request: UserRequest):
     company = gemini_output["company"]
 
     url = search_company(company)
+    soup = get_company_soup(url)
 
     # Step 4: Return whatever the search module returns
-    return url
+    return soup
