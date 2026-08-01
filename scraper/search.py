@@ -6,10 +6,6 @@ def search_company(company_name):
     if company_name is None:
         return None
 
-    headers = {
-        "User-Agent": "Mozilla/5.0"
-    }
-
     url = f"{BASE_URL}/{company_name}/consolidated/"
 
     response = requests.get(
