@@ -19,8 +19,6 @@ async def run_search(request: UserRequest):
     # Step 2: Store the Gemini output (optional)
     print("Gemini Output:")
     print(gemini_output)
-    gemini_output = parse_query(user_query)
-
     company = gemini_output["company"]
 
     url = search(company)
