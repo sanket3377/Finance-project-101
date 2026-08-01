@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-from scraper.gemini import get_stock_json
+from scraper.gemini import parse_query
 
 BASE_URL = "https://www.screener.in"
 
