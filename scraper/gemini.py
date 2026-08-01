@@ -37,14 +37,15 @@ Output:
 no matter of the prompt just give back the company name in full UPPER case letters
 """
 
-def parse_query(user_input: str) -> dict:
+
+def parse_query(user_input: str) -> str:
     response = client.models.generate_content(
-    model="gemini-3.5-flash-lite",
-    contents=user_input,
-    config=types.GenerateContentConfig(
-        system_instruction=SYSTEM_PROMPT,
-        response_mime_type="application/string",
-        temperature=0
-    ),
-)
-    return response
+        model="gemini-2.5-flash-lite",
+        contents=user_input,
+        config=types.GenerateContentConfig(
+            system_instruction=SYSTEM_PROMPT,
+            temperature=0
+        ),
+    )
+
+    return response.text
