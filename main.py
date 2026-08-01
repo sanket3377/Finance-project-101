@@ -26,4 +26,6 @@ async def run_search(request: UserRequest):
     soup = get_company_soup(url)
 
     # Step 4: Return whatever the search module returns
-    return soup
+    return {
+    "html": str(soup)
+}
