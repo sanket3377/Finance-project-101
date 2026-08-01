@@ -27,7 +27,7 @@ Input:
 Tata Motors
 
 Output:
-"Tata Motors"
+"TataMotors"
 
 Input:
 Show me Infosys quarterly revenue
