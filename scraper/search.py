@@ -9,7 +9,7 @@ def search_company(company_name):
     "User-Agent": "Mozilla/5.0"
 }
 
-    url = "https://www.screener.in/"f{company_name}"/consolidated/"
+    url = "https://www.screener.in/"+{company_name}+"/consolidated/"
 
     response = requests.get(
     url,
