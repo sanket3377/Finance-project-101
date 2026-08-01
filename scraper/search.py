@@ -10,7 +10,7 @@ def search_company(company_name):
         "User-Agent": "Mozilla/5.0"
     }
 
-    response = f"{BASE_URL}/{company_name.upper()}/consolidated/"
+    response = f"{BASE_URL}/{company_name}/consolidated/"
 
     if response.status_code != 200:
         return None
