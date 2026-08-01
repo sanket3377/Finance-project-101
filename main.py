@@ -37,4 +37,5 @@ async def run_search(request: UserRequest):
     soup = get_company_soup(url)
     print("Soup:", soup)
 
-    return {"url": url, "soup": str(soup)[:500]}
+    return {
+print(gemini_output),"url": url, "soup": str(soup)[:500]}
