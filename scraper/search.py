@@ -9,7 +9,7 @@ def search_company(company_name):
     "User-Agent": "Mozilla/5.0"
 }
 
-    url = """f"{BASE_URL}"/f"{company_name}""/consolidated/""
+    url = "f{BASE_URL}/f{company_name}"/consolidated/"
 
     response = requests.get(
     url,
