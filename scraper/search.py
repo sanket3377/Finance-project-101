@@ -1,5 +1,5 @@
 import requests
-from bs4 important BeautifulSoup
+from bs4 import BeautifulSoup
 BASE_URL = "https://www.screener.in"
 
 def search_company(company_name):
