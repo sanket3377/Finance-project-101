@@ -10,12 +10,7 @@ def search_company(company_name):
         "User-Agent": "Mozilla/5.0"
     }
 
-    response = requests.get(
-        f"{BASE_URL}/api/company/search/",
-        params={"q": company_name},
-        headers=headers,
-        timeout=20
-    )
+    response = f"{BASE_URL}/{company_name.upper()}/consolidated/"
 
     if response.status_code != 200:
         return None
