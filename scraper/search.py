@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 BASE_URL = "https://www.screener.in"
 
 def search_company(company_name):
-    if company_name=None :
+    if company_name==None :
         return none
 
     headers = {
