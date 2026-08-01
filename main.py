@@ -3,6 +3,7 @@ from pydantic import BaseModel
 
 from scraper.gemini import parse_query
 from scraper.search import search_company
+from scraper.search import 
 
 app = FastAPI()
 
