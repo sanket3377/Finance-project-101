@@ -18,9 +18,8 @@ Always return ONLY valid string.
 Never return markdown or explanations.
 
 Schema:
-{
-    "company": "Company Name"
-}
+    "Company Name"
+
 
 Examples:
 
