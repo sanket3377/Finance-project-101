@@ -1,14 +1,15 @@
 import json
+import os
+
+from dotenv import load_dotenv
 from google import genai
 from google.genai import types
-from dotenv import load_dotenv
-import os
 
 load_dotenv()
 
-api_key = os.getenv("Gemini_api_key")
+api_key = os.getenv("GEMINI_API_KEY")
 
-client = api_key # Replace with a new key
+client = genai.Client(api_key=api_key)
 
 SYSTEM_PROMPT = """
 You are a stock parser.
@@ -18,7 +19,7 @@ Never return markdown or explanations.
 
 Schema:
 {
-    "stock": "Company Name"
+    "company": "Company Name"
 }
 
 Examples:
@@ -27,13 +28,13 @@ Input:
 Tata Motors
 
 Output:
-{"stock":"Tata Motors"}
+{"company":"Tata Motors"}
 
 Input:
 Show me Infosys quarterly revenue
 
 Output:
-{"stock":"Infosys"}
+{"company":"Infosys"}
 """
 
 def parse_query(user_input: str) -> dict:
