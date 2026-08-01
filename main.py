@@ -38,4 +38,4 @@ async def run_search(request: UserRequest):
     print("Soup:", soup)
 
     return {
-gemini_output,"url": url, "soup": str(soup)[:500]}
+"gemini_output":gemini_output,"url": url, "soup": str(soup)[:500]}
