@@ -43,7 +43,7 @@ def parse_query(user_input: str) -> dict:
     contents=user_input,
     config=types.GenerateContentConfig(
         system_instruction=SYSTEM_PROMPT,
-        response_mime_type="application/json",
+        response_mime_type="application/string",
         temperature=0
     ),
 )
