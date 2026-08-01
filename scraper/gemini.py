@@ -35,7 +35,7 @@ Show me Infosys quarterly revenue
 
 Output:
 {"company":"Infosys"}
-no matter of the prompt just give back the company name
+no matter of the prompt just give back the company name in full UPPER case letters
 """
 
 def parse_query(user_input: str) -> dict:
