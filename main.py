@@ -26,7 +26,7 @@ class UserRequest(BaseModel):
 @app.post("/search")
 async def run_search(request: UserRequest):
     # Step 1: Send the user's query to Gemini
-    gemini_output = parse_query(request.query)
+    gemini_output = str(parse_query(request.query))
 
     # Step 2: Store the Gemini output (optional)
     print("Gemini:", gemini_output)
