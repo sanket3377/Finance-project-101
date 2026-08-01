@@ -24,9 +24,7 @@ def search_company(company_name):
 
     
 
-def get_company_soup(company_name):
-
-    company_url = search_company(company_name)
+def get_company_soup(company_url):
 
     if company_url is None:
         return None
