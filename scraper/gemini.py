@@ -39,7 +39,7 @@ Output:
 
 def parse_query(user_input: str) -> dict:
     response = client.models.generate_content(
-    model="gemini-2.5-flash-lite",
+    model="gemini-3.5-flash-lite",
     contents=user_input,
     config=types.GenerateContentConfig(
         system_instruction=SYSTEM_PROMPT,
