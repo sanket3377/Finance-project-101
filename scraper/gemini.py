@@ -1,8 +1,14 @@
 import json
 from google import genai
 from google.genai import types
+from dotenv import load_dotenv
+import os
 
-client = genai.Client(api_key="YOUR_NEW_API_KEY")  # Replace with a new key
+load_dotenv()
+
+api_key = os.getenv("Gemini_api_key")
+
+client = api_key # Replace with a new key
 
 SYSTEM_PROMPT = """
 You are a stock parser.
