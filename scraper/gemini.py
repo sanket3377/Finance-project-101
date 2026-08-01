@@ -47,4 +47,4 @@ def parse_query(user_input: str) -> dict:
         temperature=0
     ),
 )
-    return json.loads(response.text)
+    return response
