@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 
 from scraper.gemini import parse_query
-from scraper.search import search
+from scraper.search import search_company
 
 app = FastAPI()
 
@@ -21,7 +21,7 @@ async def run_search(request: UserRequest):
     print(gemini_output)
     company = gemini_output["company"]
 
-    url = search(company)
+    url = search_company(company)
 
     # Step 4: Return whatever the search module returns
     return url
