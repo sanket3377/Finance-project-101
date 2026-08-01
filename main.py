@@ -30,9 +30,8 @@ async def run_search(request: UserRequest):
 
     # Step 2: Store the Gemini output (optional)
     print("Gemini:", gemini_output)
-    print("Company:", company)
 
-    url = search_company(company)
+    url = search_company(gemini_output)
     print("URL:", url)
 
     soup = get_company_soup(url)
