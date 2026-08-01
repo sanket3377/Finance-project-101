@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 BASE_URL = "https://www.screener.in"
 
 def search_company(company_name):
-    if company_name is None:
+    if company_name == "None":
         return None
     headers = {
     "User-Agent": "Mozilla/5.0"
