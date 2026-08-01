@@ -27,13 +27,13 @@ Input:
 Tata Motors
 
 Output:
-{"company":"Tata Motors"}
+"Tata Motors"
 
 Input:
 Show me Infosys quarterly revenue
 
 Output:
-{"company":"Infosys"}
+"Infosys"
 no matter of the prompt just give back the company name in full UPPER case letters
 """
 
