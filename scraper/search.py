@@ -25,6 +25,7 @@ def search_company(company_name):
 
     print("Company searched:", company_name)
     print("Results:", companies)
+    return url
 
     
 
