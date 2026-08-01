@@ -20,8 +20,6 @@ def search_company(company_name):
 
     if response.status_code != 200:
         return None
-    else:
-        return url , companies
 
     print("Company searched:", company_name)
     print("Results:", companies)
