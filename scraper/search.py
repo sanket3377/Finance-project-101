@@ -16,7 +16,7 @@ def search_company(company_name):
     headers=headers,
     timeout=20
 )
-    companies = response.json()
+    companies = response
 
     if response.status_code != 200:
         return None
