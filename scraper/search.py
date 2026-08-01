@@ -20,7 +20,7 @@ def search_company(company_name):
 
     if response.status_code != 200:
         return None
-    return url
+    return url.text
 
     
 
