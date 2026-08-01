@@ -7,8 +7,6 @@ def search_company(company_name):
     if company_name=None :
         return none
 
-    company_name = company_name.strip()
-
     headers = {
         "User-Agent": "Mozilla/5.0"
     }
