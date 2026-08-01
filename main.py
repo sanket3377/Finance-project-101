@@ -29,14 +29,13 @@ async def run_search(request: UserRequest):
     gemini_output = parse_query(request.query)
 
     # Step 2: Store the Gemini output (optional)
-    print("Gemini Output:")
-    print(gemini_output)
-    company = gemini_output["company"]
+    print("Gemini:", gemini_output)
+    print("Company:", company)
 
     url = search_company(company)
-    soup = get_company_soup(url)
+    print("URL:", url)
 
-    # Step 4: Return whatever the search module returns
-    return {
-    "html": str(soup)
-}
+    soup = get_company_soup(url)
+    print("Soup:", soup)
+
+    return {"url": url, "soup": str(soup)[:500]}
